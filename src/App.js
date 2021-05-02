@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import NewCard from './pages/NewCard'
+import UserCard from './pages/UserCard'
+import UserCardAdmin from './pages/UserCardAdmin'
+
+import CTX from './util/store'
 import './App.css';
 
 function App() {
+  
+
+  const [cardData, updateCard] = useState({
+    user: {name: '',
+    imageURL: '',
+    jobtitle: '',
+    phonenumber: '',
+    site: '',
+    businessname: '',
+    urlname: '',}
+})
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CTX.Provider value={[cardData, updateCard]}>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={NewCard}/>
+          <Route exact path='/:cardName' component={UserCard}/>
+          <Route exact path='/:cardName/admin' component={UserCardAdmin}/>
+        </Switch>
+      </Router>
+    </CTX.Provider>
   );
 }
 
