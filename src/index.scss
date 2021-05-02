@@ -3,14 +3,12 @@ $secondary: #573cff;
 $input-border-radius: 25px;
 $btn-border-radius-lg: 25px;
 $btn-font-size-lg: 10px;
+$defaultBackground: #f2f2f2;
+$input-bg: $defaultBackground;
+$input-border-color: $defaultBackground;
 
 @import '../node_modules/bootstrap/scss/bootstrap';
 
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
   
   span{
     font-family: Arial, Helvetica, sans-serif;
@@ -24,24 +22,84 @@ $btn-font-size-lg: 10px;
     display: block;
   }
   
-  input{
-    border-radius: 20px ;
-    background-color: #f2f2f2 ;
-    border: 1px solid #f2f2f2 ;
-  }
 
   .cent{
       margin: auto;
+
+      p{
+          width: 308px;
+          margin: auto;
+      }
+  }
+
+  .uploadLab{
+      text-align: center;
   }
   
-  button{
-    border-radius: 25px ;
+  .restartBtn{
+      margin-top: 20px
   }
-  
+
+  .cssSelector{
+      margin-top: 190px;
+      text-align: right;
+      font-size: 15px;
+      cursor: pointer;
+  }
+
+  .shareLink{
+      margin-top:20px
+  }
   
   .container{
     max-width: 605px;
     height: 100%;
     padding-top: 7%;
   }
-  
+
+  .leftCard{
+    width: 585px;
+    height: 343px;
+    font-size: 30px;
+    background-color: #000;
+    color: #fff;
+    background-size: cover;
+
+    .fullname{
+        padding-top:10px
+    }
+    p{
+          margin-bottom: 0px;
+          padding-left:10px;
+      }
+      strong{
+        padding-left:10px;
+      }
+  }
+
+  .rightCard{
+    width: 585px;
+    height: 343px;
+    background-color: $defaultBackground;
+    font-size: 20px;
+    p{
+        margin-bottom: 0px;
+        padding-left:10px
+    }
+    .fullname{
+        font-size: 30px;
+        padding-top: 10px;
+    }
+
+    .phone{
+        margin-top: 2rem
+    }
+
+    .site{
+        margin-top: 4rem
+    }
+  }
+
+  .cardContainer{
+      padding-top: 18rem;
+  }

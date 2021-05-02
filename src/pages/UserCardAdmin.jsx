@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useParams} from 'react-router-dom'
 import axios from 'axios'
 
+import '../index.css'
+
 import CTX from '../util/store'
 import CardRender from '../components/CardRender'
 
-const UserCardAdmin = () => {
+const UserCardAdmin = (props) => {
 
     const [cardData, updateCard] = useState(CTX)
     const [thisPage, updatePage] = useState()
@@ -21,9 +23,12 @@ const UserCardAdmin = () => {
             if (res.status = 200) {
                 cardDetails = res.data
                 updateCard(cardDetails)
+                if (cardDetails.imageURL != '') {
+                    document.getElementById('left-card').style.backgroundImage = `url(${cardDetails.imageURL})`
+                }
             }
             else{
-                let cardDetails = { error: 'this card does not exist'}
+                cardDetails = { error: 'this card does not exist'}
             }
         })
         .catch((err) => {
@@ -33,6 +38,7 @@ const UserCardAdmin = () => {
 
     const handleImageInput = (e) => {
         const image = e.target.files[0]
+        console.log(image)
         const formData = new FormData()
 
         formData.append('image', image, image.name)
@@ -41,21 +47,41 @@ const UserCardAdmin = () => {
         axios.post(`/card/image/${cardName}`, formData)
         .then((res) => {
             console.log(res.data)
+            document.getElementById('left-card').style.backgroundImage = `url(${res.data.image})`
         })
         .catch((err) => {
             console.error(err)
         })
     }
 
-
-    //add component did mount axios request to generate the details
-    //https://stackoverflow.com/questions/44506207/reactjs-lifecycle-method-inside-a-function-component
-    //dont use component did mount, that doesn't work inside a fucntional component, maybe switch to class component to save effort
+    const startOver = () => {
+        const confirmBox = window.confirm('Are you sure you wish to leave this page?')
+        if (confirmBox == true) {
+            props.history.push('/')
+        }
+    }
 
     return (
-        <div>
-        <CardRender details={cardData}/>
-        <input type="file" name="" id="imageUpload" onChange={handleImageInput}/>
+        <div className="container-xl">
+            <CardRender details={cardData} admin={true}/>
+            <div className="row">
+                <div className="col">
+                    <label htmlFor="imageUpload" className="uploadLab">Use an image as your card bacground instead of a black background</label>
+                    <input className="cent" type="file" name="" id="imageUpload" onChange={handleImageInput}/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <div className="cent shareLink">
+                        <p><strong>URL to share</strong> {document.location.href.split('/admin')}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="cent">
+                    <input type="button" value="START AGAIN" className="btn restartBtn btn-secondary btn-lg pl-5 pr-5 pt-3 pb-3" onClick={startOver}/>
+                </div>
+            </div>
         </div>
     )
 }

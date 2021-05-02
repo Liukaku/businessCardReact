@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams} from 'react-router-dom'
 import axios from 'axios'
 
+import '../index.css'
 import CTX from '../util/store'
 import CardRender from '../components/CardRender'
 
@@ -21,6 +22,9 @@ const UserCard = () => {
             if (res.status = 200) {
                 cardDetails = res.data
                 updateCard(cardDetails)
+                if (cardDetails.imageURL != '') {
+                    document.getElementById('left-card').style.backgroundImage = `url(${cardDetails.imageURL})`
+                }
             }
             else{
                 let cardDetails = { error: 'this card does not exist'}
@@ -37,7 +41,9 @@ const UserCard = () => {
     //dont use component did mount, that doesn't work inside a fucntional component, maybe switch to class component to save effort
 
     return (
+        <div className="container-xl">
         <CardRender details={cardData}/>
+        </div>
     )
 }
 

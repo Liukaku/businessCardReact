@@ -38,19 +38,23 @@ const NewCard = (props) => {
                 document.getElementById(errorArr[i]).style.borderColor = 'red'
                 document.getElementById(errorArr[i]).style.boxShadow = 'red 1px 1px 10px'
             }
+            document.getElementById('error').innerHTML = 'Please complete all fields'
         }
         else{
-            axios.post('/card', newCard)
+            axios.post('/card', currentState)
             .then((res) =>{
                 if (res.data.duplicate) {
                     currentState.error = 'A card with that URL already exists, please choose a different URL'
                     if (currentState.success) {
                         delete currentState.success
                         updateCard(currentState)
+
                     }
                     else {
                         console.log(currentState)
                         updateCard(currentState)
+                        console.log("beep")
+                        document.getElementById('error').innerHTML = 'A card with that URL already exists, please choose a different URL'
                     }
                 }
                 else {
@@ -136,7 +140,12 @@ const NewCard = (props) => {
                         <small id="urlhelp" className="form-text text-muted">e.g. www.thisWebsite.com/<strong>thisName</strong></small>
                     </div>
                 </div>
+                <div className="success" id="success">
 
+                </div>
+                <div className="error" id="error">
+
+                </div>
 
                 <div className="row">
                     <div className="cent">
@@ -144,16 +153,7 @@ const NewCard = (props) => {
                     </div>
                 </div>
             </form>
-            {cardData.error ? (
-                <p>{cardData.error}</p>
-            ) : (
-                <div> </div>
-            )}
-            {cardData.success ? (
-                <p>{cardData.success}</p>
-            ) : (
-                <div> </div>
-            )}
+
         </div>
     )
 }
