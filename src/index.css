@@ -10858,6 +10858,11 @@ label, input {
   margin: auto;
 }
 
+.errorPage {
+  width: 100%;
+  text-align: center;
+}
+
 .uploadLab {
   text-align: center;
 }
@@ -10873,8 +10878,19 @@ label, input {
   cursor: pointer;
 }
 
+.colourBtns {
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.MuiPaper-root {
+  background-color: #181818 !important;
+}
+
 .shareLink {
   margin-top: 20px;
+  text-align: center;
 }
 
 .container {
@@ -10887,7 +10903,6 @@ label, input {
   width: 585px;
   height: 343px;
   font-size: 30px;
-  background-color: #000;
   color: #fff;
   background-size: cover;
 }
@@ -10917,6 +10932,12 @@ label, input {
   padding-left: 10px;
 }
 
+.rightCard a {
+  padding: 0px;
+  padding-left: 10px;
+  margin: 0px;
+}
+
 .rightCard .fullname {
   font-size: 30px;
   padding-top: 10px;
@@ -10927,10 +10948,22 @@ label, input {
 }
 
 .rightCard .site {
+  color: #000;
+  display: block;
   margin-top: 4rem;
 }
 
 .cardContainer {
   padding-top: 18rem;
+}
+
+.hidden {
+  display: none;
+  text-align: center;
+}
+
+.success, .error {
+  text-align: center;
+  color: red;
 }
 /*# sourceMappingURL=index.css.map */

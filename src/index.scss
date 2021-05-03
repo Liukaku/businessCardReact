@@ -32,6 +32,11 @@ $input-border-color: $defaultBackground;
       }
   }
 
+  .errorPage{
+      width: 100%;
+      text-align: center;
+  }
+
   .uploadLab{
       text-align: center;
   }
@@ -47,8 +52,20 @@ $input-border-color: $defaultBackground;
       cursor: pointer;
   }
 
+  .colourBtns{
+      margin: auto;
+      margin-top: 5px;
+      margin-bottom: 5px;
+  }
+
+  .MuiPaper-root{
+    background-color: #181818 !important;
+  }
+  
+
   .shareLink{
-      margin-top:20px
+      margin-top:20px;
+      text-align: center;
   }
   
   .container{
@@ -61,7 +78,6 @@ $input-border-color: $defaultBackground;
     width: 585px;
     height: 343px;
     font-size: 30px;
-    background-color: #000;
     color: #fff;
     background-size: cover;
 
@@ -86,6 +102,11 @@ $input-border-color: $defaultBackground;
         margin-bottom: 0px;
         padding-left:10px
     }
+    a{
+        padding: 0px;
+        padding-left:10px;
+        margin: 0px;
+    }
     .fullname{
         font-size: 30px;
         padding-top: 10px;
@@ -96,6 +117,8 @@ $input-border-color: $defaultBackground;
     }
 
     .site{
+        color: #000;
+        display: block;
         margin-top: 4rem
     }
   }
@@ -103,3 +126,15 @@ $input-border-color: $defaultBackground;
   .cardContainer{
       padding-top: 18rem;
   }
+
+  .hidden{
+      display: none;
+      text-align: center;
+  }
+
+  .success, .error{
+      text-align: center;
+      color: red;
+  }
+
+  
