@@ -17,17 +17,18 @@ const NewCard = (props) => {
     //executes on form submission
     const submitBtn = (e) => {
         e.preventDefault()
+        //regex checker for any special characters in the url name
+        var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
         //get current details from within the form
         let currentState = {
             name: document.getElementById('name').value,
-            imageURL: '',
+            imageURL: false,
             jobtitle: document.getElementById('jobtitle').value,
             phonenumber: document.getElementById('phonenumber').value,
             site: document.getElementById('site').value,
             businessname: document.getElementById('businessname').value,
             email: document.getElementById('email').value,
             urlname: document.getElementById('urlname').value,
-            imageURL: 'none',
             backgroundCol: '#121212'
         }
         //this is for validating that the form is complete
@@ -46,6 +47,14 @@ const NewCard = (props) => {
                 document.getElementById(errorArr[i]).style.boxShadow = 'red 1px 1px 10px'
             }
             document.getElementById('error').innerHTML = 'Please complete all fields'
+        }
+
+        //check to see if there are any special characters in the URlname
+        else if (format.test(currentState.urlname)){
+            //display an error message if there is any
+            document.getElementById('urlname').style.borderColor = 'red'
+            document.getElementById('urlname').style.boxShadow = 'red 1px 1px 10px'
+            document.getElementById('error').innerHTML = 'Do not use any special characters in the url name'
         }
 
         //if there isn't any error messages then post and create the account

@@ -60,7 +60,8 @@ const CardRender = (props) => {
             <div>
                 {/*material-ui dialog box containing a colour wheel */}
                 <Dialog
-                open={backCol.popu}>
+                open={backCol.popu}
+                onClose={handleClose}>
                     <ColorPicker width={456} height={228} color={color} onChange={setColor} hideHSV dark />
                     <div className="colourBtns">
                         <button className="btn mr-1 btn-secondary btn-lg" onClick={backgroundConfirm}>Confirm</button>
