@@ -1,3 +1,3 @@
-# Getting Started with Create React App
+# README
 
 https://boomerang-test-c69c0.web.app/
