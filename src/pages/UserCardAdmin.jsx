@@ -61,6 +61,8 @@ const UserCardAdmin = (props) => {
         //set a new form data
         const formData = new FormData()
 
+
+
         //add this image data to the form
         formData.append('image', image, image.name)
 
@@ -81,6 +83,7 @@ const UserCardAdmin = (props) => {
         }
         )
         .catch((err) => {
+            console.log("something")
             console.error(err)
         })
     }

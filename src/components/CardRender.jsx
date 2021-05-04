@@ -80,7 +80,7 @@ const CardRender = (props) => {
         <p className="jobtitle">{props.details.jobtitle}</p>
         <p className="phone">{props.details.phonenumber}</p>
         <p className="email">{props.details.email}</p>
-        <a href={props.details.site} className="site">{props.details.site}</a>
+        <a target="_blank" href={`http://${props.details.site}`} className="site">{props.details.site}</a>
     </div>
 </div>
     )
